@@ -1,3 +1,4 @@
+import 'whatwg-fetch'
 import React, { Component } from 'react'
 import './App.css'
 import CategoryList from './CategoryList'
