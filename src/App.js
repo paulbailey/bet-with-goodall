@@ -2,7 +2,6 @@ import 'whatwg-fetch'
 import React, { Component } from 'react'
 import './App.css'
 import CategoryList from './CategoryList'
-import Categories from './Categories'
 import 'bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css'
 
@@ -55,6 +54,19 @@ class App extends Component {
   }
   
   render() {
+    const propsbets = [
+      {
+        A: 'Hello',
+        B: 'Dave',
+        C: 'You\'re',
+        D: 'my',
+        E: 'wife',
+        F: 'now',
+        G: 'Hello',
+        H: 'Dave'
+      }
+    ]
+  
     return (
       <div className="container-fluid">
         <h1>Bet With Goodall</h1>
@@ -62,13 +74,10 @@ class App extends Component {
         <h3>Matchday {this.state.matchday}</h3>
         <CategoryList
           betCategories={this.state.betCategories}
+          bets={propsbets}
          />
-         <Categories 
-          betCategories={this.state.betCategories}
-          bets={this.state.bets}
-          />
       </div>
-    );
+    )
   }
 }
 

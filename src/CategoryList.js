@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import slugify from 'slugify'
 
+import BetCategory from './BetCategory'
+
 function slug(string) {
   return slugify(string, {lower:true})
 }
@@ -8,6 +10,16 @@ function slug(string) {
 class CategoryList extends Component {
 
   render() {
+  const categories = this.props.betCategories.map(el => {
+    return (
+      <BetCategory 
+        key={slug(el)}
+        categoryName={el}
+        bets={this.props.bets}
+      />
+    )
+  })
+
     const cats = this.props.betCategories.map((el) => {
       return (
       <li key={slug(el)} className='nav-item'>
@@ -16,9 +28,12 @@ class CategoryList extends Component {
     })
 
     return (
+      <div>
       <ul className='nav'>
         {cats}
       </ul>
+      {categories}
+      </div>
     )
   }
 }
