@@ -1,4 +1,4 @@
-import React from  '../../../../../../AppData/Local/Microsoft/TypeScript/2.9/node_modules/@types/react'
+import React from 'react'
 
 export default (props) => {
   const sortedKeys = Object.keys(props).sort()
@@ -6,7 +6,7 @@ export default (props) => {
     return (
       <td
         key={k}
-        >{props[k]}</td>
+      >{props[k]}</td>
     )
   })
   return (
