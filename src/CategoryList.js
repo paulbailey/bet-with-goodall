@@ -16,17 +16,13 @@ class CategoryList extends Component {
     const categoryNames = this.getBetCategories()
     const categories = categoryNames.map(el => {
       console.log(this.props.bets[el])
-      if (!this.props.bets[el][0].hasOwnProperty('detail')) {
-        return (
-          <BetCategory
-            key={slug(el)}
-            categoryName={el}
-            bets={this.props.bets[el]}
-          />
-        )
-      } else {
-        return <div>Placeholder</div>
-      }
+      return (
+        <BetCategory
+          key={slug(el)}
+          categoryName={el}
+          bets={this.props.bets[el]}
+        />
+      )
     })
 
     const cats = categoryNames.map((el) => {

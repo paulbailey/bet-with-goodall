@@ -8,32 +8,11 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 class App extends Component {
   constructor (props) {
     super(props)
-    this.state = checkBets('2730f4455d51414f8a6b86e274176d91')
-  }
-
-  checkGroupRank (group, team, rank) {
-    if (!rank.isArray()) {
-      rank = [rank]
+    this.state = {
+      title: '',
+      bets: {}
     }
-    const groupName = group.upper()
-    const matched = this.state.standings[groupName].filter((item) => {
-      return rank.includes(item.rank)
-    }).map(el => {
-      return el.team
-    })
-    return matched.includes(team)
-  }
-
-  checkGroupWinner (group, team) {
-    return this.checkGroupRank(group, team, 1)
-  }
-
-  checkGroupQualifier (group, team) {
-    return this.checkGroupRank(group, team, [1, 2])
-  }
-
-  checkGroupLoser (group, team) {
-    return this.checkGroupRank(group, team, 4)
+    checkBets(this, '2730f4455d51414f8a6b86e274176d91')
   }
 
   render () {
