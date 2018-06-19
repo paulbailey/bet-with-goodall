@@ -8,13 +8,13 @@ cache:
 script: yarn build # Here you could also run the build step of your application
 deploy:
   - provider: script # Run a custom deployment script which we will define below
-    script: now rm bet-wth-goodall --safe --yes --token $NOW_TOKEN && now --public --token $NOW_TOKEN
+    script: now rm $(now ls) --safe --yes --token $NOW_TOKEN && now --public --token $NOW_TOKEN
     skip_cleanup: true
     on:
       all_branches: true
       master: false
   - provider: script
-    script: now --regions bru --public --token $NOW_TOKEN && now alias --token $NOW_TOKEN && now rm bet-wth-goodall --safe --yes --token $NOW_TOKEN 
+    script: now --regions bru --public --token $NOW_TOKEN && now alias --token $NOW_TOKEN && now rm $(now ls) --safe --yes --token $NOW_TOKEN 
     skip_cleanup: true
     on:
       master: true
