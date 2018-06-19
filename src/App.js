@@ -20,7 +20,7 @@ class App extends Component {
       <div className='container-fluid'>
         <h1>Bet With Goodall</h1>
         <h2>{this.state.title}</h2>
-        <h3>Matchday {this.state.matchday}</h3>
+        { /* <h3>Matchday {this.state.matchday}</h3> */}
         <CategoryList
           bets={this.state.bets}
         />

@@ -19,6 +19,7 @@ class CategoryList extends Component {
       return (
         <BetCategory
           key={slug(el)}
+          slug={slug(el)}
           categoryName={el}
           bets={this.props.bets[el]}
         />

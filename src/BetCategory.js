@@ -26,7 +26,7 @@ class BetCategory extends Component {
         )
       })
       return (<div>
-        <h4>{this.props.categoryName}</h4>
+        <h4><a name={this.props.slug}>{this.props.categoryName}</a></h4>
         <table className='table table-sm'>
           <thead>
             <tr>
@@ -58,6 +58,7 @@ class BetCategory extends Component {
 
 BetCategory.propTypes = {
   bets: PropTypes.array,
+  slug: PropTypes.string,
   categoryName: PropTypes.string
 }
 
