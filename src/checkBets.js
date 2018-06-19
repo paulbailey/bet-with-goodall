@@ -33,6 +33,14 @@ function getTeamsAtRank (standings, rank) {
 function checkGroupBet (bet, rank, standings) {
   const loserBetSet = new Set(Object.values(bet))
   const losers = getTeamsAtRank(standings, rank)
+  const groups = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H']
+  groups.forEach(k => {
+    const name = bet[k]
+    bet[k] = {
+      name,
+      className: losers.has(name) ? 'table-success' : 'table-danger'
+    }
+  })
   bet.winning = isSuperset(losers, loserBetSet)
   return bet
 }

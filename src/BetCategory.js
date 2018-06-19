@@ -7,22 +7,21 @@ class BetCategory extends Component {
   }
 
   render () {
-    console.log(this.props.bets.filter(this.checkGroupBet))
     if (this.props.bets.filter(this.checkGroupBet).length > 0) {
       const bets = this.props.bets.map(el => {
         return (
-          <tr
-            className={el.winning ? 'table-success' : 'table-danger'}
-          >
-            <td>{el.A}</td>
-            <td>{el.B}</td>
-            <td>{el.C}</td>
-            <td>{el.D}</td>
-            <td>{el.E}</td>
-            <td>{el.F}</td>
-            <td>{el.G}</td>
-            <td>{el.H}</td>
-            <td><strong>{el.winning ? el.winnings : '0.00' }</strong> <small>({el.winning ? '' : el.winnings})</small></td>
+          <tr>
+            <td className={el.A.className}>{el.A.name}</td>
+            <td className={el.B.className}>{el.B.name}</td>
+            <td className={el.C.className}>{el.C.name}</td>
+            <td className={el.D.className}>{el.D.name}</td>
+            <td className={el.E.className}>{el.E.name}</td>
+            <td className={el.F.className}>{el.F.name}</td>
+            <td className={el.G.className}>{el.G.name}</td>
+            <td className={el.H.className}>{el.H.name}</td>
+            <td
+              className={el.winning ? 'table-success' : 'table-danger'}
+            ><strong>{el.winning ? el.winnings : '0.00' }</strong> <small>({el.winning ? '' : el.winnings})</small></td>
           </tr>
         )
       })
