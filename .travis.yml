@@ -11,7 +11,7 @@ deploy:
     script: now --regions bru --public --token $NOW_TOKEN
     skip_cleanup: true
     on:
-      mater: false
+      master: false
       all_branches: true
   - provider: script
     script: now --regions bru --public --token $NOW_TOKEN && now alias --token $NOW_TOKEN && now rm bet-with-goodall --safe --yes --token $NOW_TOKEN 
