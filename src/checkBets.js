@@ -8,6 +8,14 @@ function getLeagueTablesFetch (apiKey) {
   })
 }
 
+function getLastComnpletedFixture (apiKey) {
+  return fetch('https://api.football-data.org/v1/competitions/467/fixtures', {
+    headers: {
+      'X-Auth-Token': apiKey
+    }
+  })
+}
+
 function isSuperset (set, subset) {
   for (var elem of subset) {
     if (!set.has(elem)) {
@@ -49,11 +57,19 @@ export default (app, apiKey) => {
   let results = {}
   let preReqs = [
     getLeagueTablesFetch(apiKey).then(r => r.json()),
-    fetch('bets.json').then(r => r.json())
+    fetch('bets.json').then(r => r.json()),
+    getLastComnpletedFixture(apiKey).then(r => r.json())
   ]
   Promise.all(preReqs).then(r => {
-    let [tables, bets] = r
-    console.log(tables, bets)
+    let [tables, bets, fixtures] = r
+    let finishedFixtures = fixtures.fixtures.filter(el => {
+      return el.status === 'FINISHED'
+    })
+    finishedFixtures.sort((a, b) => {
+      return a.date < b.date ? 1 : -1
+    })
+    const lastFixture = finishedFixtures[0]
+    console.log(tables, bets, finishedFixtures)
     bets['Group Losers'] = bets['Group Losers'].map(b => {
       return checkGroupBet(b, [4], tables.standings)
     })
@@ -68,6 +84,7 @@ export default (app, apiKey) => {
     results.matchday = tables.matchday
     results.standings = tables.standings
     results.bets = bets
+    results.lastMatch = `${lastFixture.homeTeamName} vs. ${lastFixture.awayTeamName}`
     app.setState(results)
     console.log(results)
   })

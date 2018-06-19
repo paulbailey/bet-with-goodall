@@ -10,7 +10,8 @@ class App extends Component {
     super(props)
     this.state = {
       title: '',
-      bets: {}
+      bets: {},
+      lastMatch: ''
     }
     checkBets(this, '2730f4455d51414f8a6b86e274176d91')
   }
@@ -20,6 +21,7 @@ class App extends Component {
       <div className='container-fluid'>
         <h1>Bet With Goodall</h1>
         <h2>{this.state.title}</h2>
+        <h5>As at end of {this.state.lastMatch}</h5>
         { /* <h3>Matchday {this.state.matchday}</h3> */}
         <CategoryList
           bets={this.state.bets}

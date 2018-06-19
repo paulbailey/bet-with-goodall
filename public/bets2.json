@@ -1,4 +1,20 @@
 {
+  "World Cup Winner": [{
+    "details": {
+      "name": "Germany"
+    },
+    "stake": 5,
+    "winnings": 28
+  }],
+  "Top Scorer": [
+    {
+      "details": {
+        "name": "Neymar"
+      },
+      "stake": 5,
+      "winnings": 55
+    }
+  ],
   "Group Winners": [
     {
       "A": "Uruguay",
