@@ -1,5 +1,13 @@
 {
   "name": "bet-with-goodall",
+  "now": {
+    "alias": "bet-with-goodall",
+    "files": [
+      "build",
+      "package.json",
+      "yarn.lock"
+    ]
+  },
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -19,7 +27,8 @@
     "devstart": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "now-build": "echo 'Built on Travis CI'"
   },
   "devDependencies": {
     "eslint": "^4.19.1",

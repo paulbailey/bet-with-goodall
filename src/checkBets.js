@@ -1,7 +1,7 @@
 import 'whatwg-fetch'
 
 function getLeagueTablesFetch (apiKey) {
-  return fetch('http://api.football-data.org/v1/competitions/467/leagueTable', {
+  return fetch('https://api.football-data.org/v1/competitions/467/leagueTable', {
     headers: {
       'X-Auth-Token': apiKey
     }
