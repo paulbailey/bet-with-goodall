@@ -27,7 +27,7 @@ class BetCategory extends Component {
       })
       return (<div>
         <h4><a name={this.props.slug}>{this.props.categoryName}</a></h4>
-        <table className='table table-sm'>
+        <div className='table-responsive'><table className='table table-sm table-bordered'>
           <thead>
             <tr>
               <th>Group A</th>
@@ -45,6 +45,7 @@ class BetCategory extends Component {
             {bets}
           </tbody>
         </table>
+        </div>
       </div>)
     } else {
       return (<div>

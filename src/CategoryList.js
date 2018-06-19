@@ -15,7 +15,6 @@ class CategoryList extends Component {
   render () {
     const categoryNames = this.getBetCategories()
     const categories = categoryNames.map(el => {
-      console.log(this.props.bets[el])
       return (
         <BetCategory
           key={slug(el)}
