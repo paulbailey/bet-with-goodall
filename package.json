@@ -3,9 +3,7 @@
   "now": {
     "alias": "bet-with-goodall",
     "files": [
-      "build",
-      "package.json",
-      "yarn.lock"
+      "build"
     ]
   },
   "version": "0.1.0",
