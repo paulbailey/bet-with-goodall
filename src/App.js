@@ -19,12 +19,11 @@ class App extends Component {
   render () {
     return (
       <div className='container-fluid'>
-        <h1>Bet With Goodall</h1>
         <h2>{this.state.title}</h2>
         <h5>As at end of {this.state.lastMatch}</h5>
-        { /* <h3>Matchday {this.state.matchday}</h3> */}
         <CategoryList
           bets={this.state.bets}
+          lastMatch={this.state.lastMatch}
         />
       </div>
     )

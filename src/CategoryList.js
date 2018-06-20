@@ -44,6 +44,7 @@ class CategoryList extends Component {
             {cats}
           </ul>
         </div>
+        <div className="mr-sm-2">{this.props.lastMatch}</div>
         </nav>
           {categories}
         </div>
@@ -52,7 +53,8 @@ class CategoryList extends Component {
 }
 
 CategoryList.propTypes = {
-  bets: PropTypes.object
+  bets: PropTypes.object,
+  lastMatch: PropTypes.string
 }
 
 export default CategoryList
