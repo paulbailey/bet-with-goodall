@@ -10,12 +10,10 @@ deploy:
   - provider: script # Run a custom deployment script which we will define below
     script: now --regions bru --public --token $NOW_TOKEN
     skip_cleanup: true
-    branches:
-      except:
-        - master
+    on:
+      branch: staging
   - provider: script
     script: now --regions bru --public --token $NOW_TOKEN && now alias --token $NOW_TOKEN && now rm bet-with-goodall --safe --yes --token $NOW_TOKEN 
     skip_cleanup: true
-    branches:
-      only:
-        - master
+    on:
+      branch: master
