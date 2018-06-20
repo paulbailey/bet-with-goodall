@@ -44,7 +44,7 @@ class CategoryList extends Component {
             {cats}
           </ul>
         </div>
-        <div className="mr-sm-2">{this.props.lastMatch}</div>
+        <div className="mr-sm-2">As at end of {this.props.lastMatch}</div>
         </nav>
           {categories}
         </div>

@@ -20,7 +20,6 @@ class App extends Component {
     return (
       <div className='container-fluid'>
         <h2>{this.state.title}</h2>
-        <h5>As at end of {this.state.lastMatch}</h5>
         <CategoryList
           bets={this.state.bets}
           lastMatch={this.state.lastMatch}
