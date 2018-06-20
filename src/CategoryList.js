@@ -43,9 +43,9 @@ class CategoryList extends Component {
           <ul className="navbar-nav mr-auto">
             {cats}
           </ul>
-        {categories}
         </div>
         </nav>
+          {categories}
         </div>
     )
   }
