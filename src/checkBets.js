@@ -74,7 +74,6 @@ export default (app, apiKey) => {
       return a.date < b.date ? 1 : -1
     })
     const lastFixture = finishedFixtures[0]
-    console.log(tables, bets, finishedFixtures)
     bets['Group Losers'] = bets['Group Losers'].map(b => {
       return checkGroupBet(b, [4], tables.standings)
     })
