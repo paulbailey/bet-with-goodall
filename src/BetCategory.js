@@ -8,9 +8,9 @@ class BetCategory extends Component {
 
   render () {
     if (this.props.bets.filter(this.checkGroupBet).length > 0) {
-      const bets = this.props.bets.map(el => {
+      const bets = this.props.bets.map((el, idx) => {
         return (
-          <tr>
+          <tr key={idx}>
             <td className={el.A.className}>{el.A.name}</td>
             <td className={el.B.className}>{el.B.name}</td>
             <td className={el.C.className}>{el.C.name}</td>
