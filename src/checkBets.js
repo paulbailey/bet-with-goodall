@@ -3,7 +3,9 @@ import 'whatwg-fetch'
 function getLeagueTablesFetch (apiKey) {
   return fetch('https://api.football-data.org/v1/competitions/467/leagueTable', {
     headers: {
-      'X-Auth-Token': apiKey
+      'X-Auth-Token': apiKey,
+      "Accept": "application/json",
+      "Content-Type": "application/json"
     }
   })
 }
@@ -11,7 +13,9 @@ function getLeagueTablesFetch (apiKey) {
 function getLastComnpletedFixture (apiKey) {
   return fetch('https://api.football-data.org/v1/competitions/467/fixtures', {
     headers: {
-      'X-Auth-Token': apiKey
+      'X-Auth-Token': apiKey,
+      "Accept": "application/json",
+      "Content-Type": "application/json"
     }
   })
 }
