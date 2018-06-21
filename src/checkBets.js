@@ -63,6 +63,9 @@ export default (app, apiKey) => {
     getLastComnpletedFixture(apiKey).then(r => r.json())
   ]
   Promise.all(preReqs).then(r => {
+    app.setState({
+      loading: false
+    })
     let [tables, bets, fixtures] = r
     let finishedFixtures = fixtures.fixtures.filter(el => {
       return el.status === 'FINISHED'
