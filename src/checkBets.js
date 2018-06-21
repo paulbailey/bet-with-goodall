@@ -9,7 +9,7 @@ function getLeagueTablesFetch (apiKey) {
   })
 }
 
-function getLastComnpletedFixture (apiKey) {
+function getLastCompletedFixture (apiKey) {
   return fetch('https://api.football-data.org/v1/competitions/467/fixtures', {
     headers: {
       'X-Auth-Token': apiKey,
@@ -60,7 +60,7 @@ export default (app, apiKey) => {
   let preReqs = [
     getLeagueTablesFetch(apiKey).then(r => r.json()),
     fetch('bets.json').then(r => r.json()),
-    getLastComnpletedFixture(apiKey).then(r => r.json())
+    getLastCompletedFixture(apiKey).then(r => r.json())
   ]
   Promise.all(preReqs).then(r => {
     app.setState({
@@ -84,13 +84,17 @@ export default (app, apiKey) => {
     bets['Group Qualifiers'] = bets['Group Qualifiers'].map(b => {
       return checkGroupBet(b, [1, 2], tables.standings)
     })
-
     results.title = tables.leagueCaption
     results.matchday = tables.matchday
     results.standings = tables.standings
     results.bets = bets
     results.lastMatch = `${lastFixture.homeTeamName} vs. ${lastFixture.awayTeamName}`
     app.setState(results)
-    console.log(results)
+  }).catch(err => {
+    console.error(err)
+    app.setState({
+      fetchError: err,
+      loading: false
+    })
   })
 }
