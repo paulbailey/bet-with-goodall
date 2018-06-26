@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import { format } from 'd3-format'
 
 class BetCategory extends Component {
   checkGroupBet (bet) {
@@ -8,22 +9,41 @@ class BetCategory extends Component {
 
   render () {
     if (this.props.bets.filter(this.checkGroupBet).length > 0) {
+      const pct = format('.1%')
       const bets = this.props.bets.map((el, idx) => {
-        return (
-          <tr key={idx}>
-            <td className={el.A.className}>{el.A.name}</td>
-            <td className={el.B.className}>{el.B.name}</td>
-            <td className={el.C.className}>{el.C.name}</td>
-            <td className={el.D.className}>{el.D.name}</td>
-            <td className={el.E.className}>{el.E.name}</td>
-            <td className={el.F.className}>{el.F.name}</td>
-            <td className={el.G.className}>{el.G.name}</td>
-            <td className={el.H.className}>{el.H.name}</td>
-            <td
-              className={el.winning ? 'table-success' : 'table-danger'}
-            ><strong>{el.winning ? el.winnings : '0.00' }</strong> <small>({el.winning ? '' : el.winnings})</small></td>
-          </tr>
-        )
+        if (el.alive) {
+          return (
+            <tr key={idx}>
+              <td className={el.A.className}>{el.A.name} <small>{pct(el.A.odds)}</small></td>
+              <td className={el.B.className}>{el.B.name} <small>{pct(el.B.odds)}</small></td>
+              <td className={el.C.className}>{el.C.name} <small>{pct(el.C.odds)}</small></td>
+              <td className={el.D.className}>{el.D.name} <small>{pct(el.D.odds)}</small></td>
+              <td className={el.E.className}>{el.E.name} <small>{pct(el.E.odds)}</small></td>
+              <td className={el.F.className}>{el.F.name} <small>{pct(el.F.odds)}</small></td>
+              <td className={el.G.className}>{el.G.name} <small>{pct(el.G.odds)}</small></td>
+              <td className={el.H.className}>{el.H.name} <small>{pct(el.H.odds)}</small></td>
+              <td
+                className={el.winning ? 'table-success' : 'table-danger'}
+              ><strong>{el.winning ? el.winnings : '0.00' }</strong> <small>({el.winning ? '' : el.winnings})</small></td>
+            </tr>
+          )
+        } else {
+          return (
+            <tr key={idx}>
+              <td className={el.A.className}><s>{el.A.name} <small>{pct(el.A.odds)}</small></s></td>
+              <td className={el.B.className}><s>{el.B.name} <small>{pct(el.B.odds)}</small></s></td>
+              <td className={el.C.className}><s>{el.C.name} <small>{pct(el.C.odds)}</small></s></td>
+              <td className={el.D.className}><s>{el.D.name} <small>{pct(el.D.odds)}</small></s></td>
+              <td className={el.E.className}><s>{el.E.name} <small>{pct(el.E.odds)}</small></s></td>
+              <td className={el.F.className}><s>{el.F.name} <small>{pct(el.F.odds)}</small></s></td>
+              <td className={el.G.className}><s>{el.G.name} <small>{pct(el.G.odds)}</small></s></td>
+              <td className={el.H.className}><s>{el.H.name} <small>{pct(el.H.odds)}</small></s></td>
+              <td
+                className={el.winning ? 'table-success' : 'table-danger'}
+              ><s><strong>{el.winning ? el.winnings : '0.00' }</strong> <small>({el.winning ? '' : el.winnings})</small></s></td>
+            </tr>
+          )
+        }
       })
       return (<div>
         <h4><a name={this.props.slug}>{this.props.categoryName}</a></h4>
