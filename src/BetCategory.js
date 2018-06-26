@@ -29,7 +29,7 @@ class BetCategory extends Component {
           )
         } else {
           return (
-            <tr key={idx}>
+            <tr key={idx}style={{opacity: 0.5}}>
               <td className={el.A.className}><s>{el.A.name} <small>{pct(el.A.odds)}</small></s></td>
               <td className={el.B.className}><s>{el.B.name} <small>{pct(el.B.odds)}</small></s></td>
               <td className={el.C.className}><s>{el.C.name} <small>{pct(el.C.odds)}</small></s></td>
