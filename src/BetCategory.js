@@ -11,6 +11,14 @@ class BetCategory extends Component {
     if (this.props.bets.filter(this.checkGroupBet).length > 0) {
       const pct = format('.1%')
       const bets = this.props.bets.map((el, idx) => {
+        const cumOdds = el.A.odds *
+                        el.B.odds *
+                        el.C.odds *
+                        el.D.odds *
+                        el.E.odds *
+                        el.F.odds *
+                        el.G.odds *
+                        el.H.odds
         if (el.alive) {
           return (
             <tr key={idx}>
@@ -24,7 +32,7 @@ class BetCategory extends Component {
               <td className={el.H.className}>{el.H.name} <small>{pct(el.H.odds)}</small></td>
               <td
                 className={el.winning ? 'table-success' : 'table-danger'}
-              ><strong>{el.winning ? el.winnings : '0.00' }</strong> <small>({el.winning ? '' : el.winnings})</small></td>
+              ><strong>{el.winning ? el.winnings : '0.00' }</strong> <small> { pct(cumOdds) } (&pound;{el.winning ? '' : el.winnings})</small></td>
             </tr>
           )
         } else {
@@ -40,7 +48,7 @@ class BetCategory extends Component {
               <td className={el.H.className}><s>{el.H.name} <small>{pct(el.H.odds)}</small></s></td>
               <td
                 className={el.winning ? 'table-success' : 'table-danger'}
-              ><s><strong>{el.winning ? el.winnings : '0.00' }</strong> <small>({el.winning ? '' : el.winnings})</small></s></td>
+              ><s><strong>{el.winning ? el.winnings : '0.00' }</strong> <small> { pct(cumOdds) } (&pound;{el.winning ? '' : el.winnings})</small></s></td>
             </tr>
           )
         }
