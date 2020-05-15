@@ -37,7 +37,7 @@
     "popper.js": "^1.16.1",
     "prop-types": "^15.6.1",
     "react": "^16.13.1",
-    "react-dom": "^16.8.6",
+    "react-dom": "^16.13.1",
     "react-loading-overlay": "^1.0.1",
     "react-scripts": "1.1.4",
     "slugify": "^1.4.0",
